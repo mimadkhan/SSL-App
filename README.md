@@ -25,3 +25,44 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Generate SSL Certificate and Key
+
+1. Create certificate.cnf file.
+
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+x509_extensions = v3_req
+distinguished_name = dn
+
+[dn]
+C = PK
+ST = KPK
+L = KPK
+O = GIK University
+OU = GIK University Unit
+emailAddress = no-reply@gik.edu.pk
+CN = localhost
+
+[v3_req]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+
+2. run the following command 
+ openssl req -new -x509 -newkey rsa:2048 -sha256 -nodes -keyout server.key -days 36525 -out server.crt -config certificate.cnf
+
+ 3. run the application 
+ng serve --ssl true --ssl-key "D:\Implement SSL\SSL-App\ssl\server.key" --ssl-cert "D:\Implement SSL\SSL-App\ssl\server.crt"
+
+4. Change in package.json file
+
+    "start-ssl": "ng serve --ssl true --ssl-key \"D:\\Implement SSL\\SSL-App\\localhost.key\" --ssl-cert \"D:\\Implement SSL\\SSL-App\\localhost.crt\"",
+ 
+    "start-ssl": "ng serve --ssl true --ssl-key \"D:\\Implement SSL\\SSL-App\\ssl\\server.key\" --ssl-cert \"D:\\Implement SSL\\SSL-App\\ssl\\server.crt\"",
+
+

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --ssl true",
+    "start": "ng serve",
+    "start-ssl": "ng serve --ssl true --ssl-key \"D:\\Implement SSL\\SSL-App\\ssl\\server.key\" --ssl-cert \"D:\\Implement SSL\\SSL-App\\ssl\\server.crt\"",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
