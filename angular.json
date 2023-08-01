@@ -67,6 +67,11 @@
             "production": {
               "browserTarget": "SSL-App:build:production"
             },
+            "options":{
+              "sslKey": "ssl/server.key",
+              "sslCert": "ssl/server.crt",
+              "ssl": true
+            },
             "development": {
               "browserTarget": "SSL-App:build:development"
             }
@@ -100,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
